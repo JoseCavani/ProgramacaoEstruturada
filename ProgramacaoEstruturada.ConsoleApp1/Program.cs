@@ -13,8 +13,8 @@ namespace ProgramacaoEstruturada.ConsoleApp1
             mostraNumeros(numeros);
             Array.Sort(numeros);
             menoresNumeros(numeros, out int menor);// menor agora esta atribuido aqui tambem
-            maioresNumeros(ref numeros);
             Console.WriteLine($"o menor numero e: {menor}");
+            maioresNumeros(ref numeros);
             acharMedia(media);
             numerosNegativos(numeros);
             retirarNumero(numeros);
