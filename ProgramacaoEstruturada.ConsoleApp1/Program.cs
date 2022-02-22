@@ -38,7 +38,7 @@ namespace ProgramacaoEstruturada.ConsoleApp1
                         numerosNegativos(numeros);
                         continue;
                     case 5:
-                        retirarNumero(numeros);
+                        numeros = retirarNumero(numeros);
                         continue;
                     case 6:
                         goto fim;
@@ -49,7 +49,7 @@ namespace ProgramacaoEstruturada.ConsoleApp1
         static void digitarOpcao(out int opção)
         {
         digiteDeNovo:
-            DigiteUmNumero("selecione opção 0 = mostrar numeros\n  1 = menor numero \n2 = maiores numeros \n" +
+            DigiteUmNumero("selecione opção\n 0 = mostrar numeros\n  1 = menor numero \n2 = maiores numeros \n" +
                 "3 = achar a media\n" +
                 "4 = numeros negativos\n" +
                 "5 = retirar numero\n" +
@@ -60,10 +60,10 @@ namespace ProgramacaoEstruturada.ConsoleApp1
                 goto digiteDeNovo;
             }
         }
-        static void retirarNumero(int[] numeros)
+        static int[] retirarNumero(int[] numeros)
         {
             int z = 0;
-            int[] numeros2 = new int[9];
+            int[] numeros2 = new int[numeros.Length-1];
             int quantidadeNumerosParaRetirar = 0;
             int lugar = 0;
         digiteDeNovo:
@@ -135,6 +135,7 @@ namespace ProgramacaoEstruturada.ConsoleApp1
             }
             numeros = numeros2;
             mostraNumeros(numeros);
+            return numeros;
         }
         static void numerosNegativos(int[] numeros)
         {
@@ -160,8 +161,8 @@ namespace ProgramacaoEstruturada.ConsoleApp1
         static void maioresNumeros(ref int[] numeros)
         {
             Array.Sort(numeros);
-            Console.WriteLine($"o maior numero e: {numeros[9]}\n " +
-                $"os outros 2 maiores sao: {numeros[8]} e {numeros[7]}");
+            Console.WriteLine($"o maior numero e: {numeros[numeros.Length-1]}\n " +
+                $"os outros 2 maiores sao: {numeros[numeros.Length-2]} e {numeros[numeros.Length-3]}");
             
         }
         static void mostraNumeros(int[] numeros)
