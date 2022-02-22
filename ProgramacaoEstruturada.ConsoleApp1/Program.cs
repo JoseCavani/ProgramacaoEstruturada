@@ -8,6 +8,7 @@ namespace ProgramacaoEstruturada.ConsoleApp1
     {
         static void Main(string[] args)
         {
+            //opção = 0
             entradaDeNumero(out int[] numeros, out int media);
             while (true)
             {
@@ -22,23 +23,23 @@ namespace ProgramacaoEstruturada.ConsoleApp1
                 {
                     case 0:
                         mostraNumeros(numeros);
-                        break;
+                        continue;
                     case 1:
                         menoresNumeros(numeros, out int menor);
                         Console.WriteLine($"o menor numero e: {menor}");
-                        break;
+                        continue;
                     case 2:
                         maioresNumeros(ref numeros);
-                        break;
+                        continue;
                     case 3:
                         acharMedia(media);
-                        break;
+                        continue;
                     case 4:
                         numerosNegativos(numeros);
-                        break;
+                        continue;
                     case 5:
                         retirarNumero(numeros);
-                        break;
+                        continue;
                     case 6:
                         goto fim;
                 }
