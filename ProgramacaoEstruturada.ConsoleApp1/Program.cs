@@ -105,29 +105,36 @@ namespace ProgramacaoEstruturada.ConsoleApp1
                 {
                     Console.Write(item + "/");
                 }
-                volta:
+            volta:
                 Console.WriteLine("qual deseja remover?");
                 if (!(int.TryParse(Console.ReadLine(), out lugar)))
+                {
                     Console.WriteLine("erro");
-                goto volta;
+                    goto volta;
+                }
+                for (int i = 0; i < numeros.Length; i++)
+                {
+                    if (i != lugar)
+                    {
+                        numeros2[z] = numeros[i];
+                        z++;
+                    }
+                }
             }
             else
             {
-                lugar = numeroRetirar;
-            }
-
- 
-            for (int i = 0; i < numeros.Length; i++)
-            {
-                if (i != lugar)
+                for (int i = 0; i < numeros.Length; i++)
                 {
-                    numeros2[z] = numeros[i];
-                    z++;
+                    if (numeros[i] != numeroRetirar)
+                    {
+                        numeros2[z] = numeros[i];
+                        z++;
+                    }
                 }
+               
             }
             numeros = numeros2;
             mostraNumeros(numeros);
-
         }
         static void numerosNegativos(int[] numeros)
         {
