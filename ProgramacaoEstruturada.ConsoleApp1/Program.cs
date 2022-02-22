@@ -11,7 +11,6 @@ namespace ProgramacaoEstruturada.ConsoleApp1
         {
             entradaDeNumero(out int[] numeros,out int media);
             mostraNumeros(numeros);
-            Array.Sort(numeros);
             menoresNumeros(numeros, out int menor);// menor agora esta atribuido aqui tambem
             Console.WriteLine($"o menor numero e: {menor}");
             maioresNumeros(ref numeros);
@@ -57,10 +56,12 @@ namespace ProgramacaoEstruturada.ConsoleApp1
         }
         static void menoresNumeros(int[] numeros,out int menor)
         {
+            Array.Sort(numeros);
             menor = numeros[0];
         }
         static void maioresNumeros(ref int[] numeros)
         {
+            Array.Sort(numeros);
             Console.WriteLine($"o maior numero e: {numeros[9]}\n " +
                 $"os outros 2 maiores sao: {numeros[8]} e {numeros[7]}");
             
