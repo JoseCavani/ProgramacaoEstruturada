@@ -6,36 +6,126 @@ namespace ProgramacaoEstruturada.ConsoleApp1
 {
     internal class Program
     {
-       
         static void Main(string[] args)
         {
-            entradaDeNumero(out int[] numeros,out int media);
-            mostraNumeros(numeros);
-            menoresNumeros(numeros, out int menor);// menor agora esta atribuido aqui tambem
-            Console.WriteLine($"o menor numero e: {menor}");
-            maioresNumeros(ref numeros);
-            acharMedia(media);
-            numerosNegativos(numeros);
-            retirarNumero(numeros);
-            Console.ReadKey();
+            entradaDeNumero(out int[] numeros, out int media);
+            while (true)
+            {
+                // retorno = operação(input);
+
+
+                // opção =  digitarOpcao();
+                digitarOpcao(out int opção);
+
+
+                switch (opção)
+                {
+                    case 0:
+                        mostraNumeros(numeros);
+                        break;
+                    case 1:
+                        menoresNumeros(numeros, out int menor);
+                        Console.WriteLine($"o menor numero e: {menor}");
+                        break;
+                    case 2:
+                        maioresNumeros(ref numeros);
+                        break;
+                    case 3:
+                        acharMedia(media);
+                        break;
+                    case 4:
+                        numerosNegativos(numeros);
+                        break;
+                    case 5:
+                        retirarNumero(numeros);
+                        break;
+                    case 6:
+                        goto fim;
+                }
+            }
+        fim:;
+        }
+        static void digitarOpcao(out int opção)
+        {
+        digiteDeNovo:
+            DigiteUmNumero("selecione opção 0 = mostrar numeros\n  1 = menor numero \n2 = maiores numeros \n" +
+                "3 = achar a media\n" +
+                "4 = numeros negativos\n" +
+                "5 = retirar numero\n" +
+                "6 = sair\n", out bool naoENumero, out opção);
+            if (naoENumero || opção > 6 || opção < 0)
+            {
+                mensagemErro();
+                goto digiteDeNovo;
+            }
         }
         static void retirarNumero(int[] numeros)
         {
-            List<int> numerosList = numeros.ToList();
+            int z = 0;
+            int[] numeros2 = new int[9];
+            int quantidadeNumerosParaRetirar = 0;
+            int lugar = 0;
         digiteDeNovo:
-            DigiteUmNumero("digite um numero", out bool naoENumero, out int numero);
+            DigiteUmNumero("digite um numero", out bool naoENumero, out int numeroRetirar);
             if (naoENumero)
             {
                 mensagemErro();
                 goto digiteDeNovo;
             }
-            numerosList.Remove(numero);
-            numeros = numerosList.ToArray(); // retirar essa linha se nao for necessario entregar essa atividade como um array
 
-            foreach (var numeroEmNumeros in numeros)
+
+
+            for (int i = 0; i < numeros.Length; i++)
             {
-                Console.Write(numeroEmNumeros + "/");
+                if (numeroRetirar == numeros[i])
+                {
+                    quantidadeNumerosParaRetirar++;
+                }
             }
+
+
+            if (quantidadeNumerosParaRetirar > 1)
+            {
+                int[] numerosParaRetirar = new int[quantidadeNumerosParaRetirar];
+
+                int j = 0;
+                for (int i = 0; i < numeros.Length; i++)
+                {
+                    if (numeroRetirar == numeros[i])
+                    {
+                        numerosParaRetirar[j] = i;
+                        j++;
+                    }
+                }
+
+                Console.Write("o numero digitado esta nas posições: ");
+
+                foreach (var item in numerosParaRetirar)
+                {
+                    Console.Write(item + "/");
+                }
+                volta:
+                Console.WriteLine("qual deseja remover?");
+                if (!(int.TryParse(Console.ReadLine(), out lugar)))
+                    Console.WriteLine("erro");
+                goto volta;
+            }
+            else
+            {
+                lugar = numeroRetirar;
+            }
+
+ 
+            for (int i = 0; i < numeros.Length; i++)
+            {
+                if (i != lugar)
+                {
+                    numeros2[z] = numeros[i];
+                    z++;
+                }
+            }
+            numeros = numeros2;
+            mostraNumeros(numeros);
 
         }
         static void numerosNegativos(int[] numeros)
