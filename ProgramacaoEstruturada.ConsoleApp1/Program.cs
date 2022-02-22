@@ -20,7 +20,7 @@ namespace ProgramacaoEstruturada.ConsoleApp1
             retirarNumero(numeros);
             Console.ReadKey();
         }
-        private static void retirarNumero(int[] numeros)
+        static void retirarNumero(int[] numeros)
         {
             List<int> numerosList = numeros.ToList();
         digiteDeNovo:
@@ -39,7 +39,7 @@ namespace ProgramacaoEstruturada.ConsoleApp1
             }
 
         }
-        private static void numerosNegativos(int[] numeros)
+        static void numerosNegativos(int[] numeros)
         {
             Console.Write($"os numeros negativos são: \n");
             foreach (var numero in numeros)
@@ -50,22 +50,22 @@ namespace ProgramacaoEstruturada.ConsoleApp1
             }
             Console.WriteLine();
         }
-        private static void acharMedia(int media)
+        static void acharMedia(int media)
         {
             media = media / 10;
             Console.WriteLine($"media e : {media}");
         }
-        private static void menoresNumeros(int[] numeros,out int menor)
+        static void menoresNumeros(int[] numeros,out int menor)
         {
             menor = numeros[0];
         }
-        private static void maioresNumeros(ref int[] numeros)
+        static void maioresNumeros(ref int[] numeros)
         {
             Console.WriteLine($"o maior numero e: {numeros[9]}\n " +
                 $"os outros 2 maiores sao: {numeros[8]} e {numeros[7]}");
             
         }
-        private static void mostraNumeros(int[] numeros)
+        static void mostraNumeros(int[] numeros)
         {
             foreach (var numero in numeros)
             {
