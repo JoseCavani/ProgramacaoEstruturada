@@ -9,7 +9,7 @@ namespace ProgramacaoEstruturada.ConsoleApp1
         static void Main(string[] args)
         {
             //opção = 0
-            entradaDeNumero(out int[] numeros, out int media);
+            entradaDeNumero(out int[] numeros, out decimal media);
             while (true)
             {
                 // retorno = operação(input);
@@ -147,7 +147,7 @@ namespace ProgramacaoEstruturada.ConsoleApp1
             }
             Console.WriteLine();
         }
-        static void acharMedia(int media,int[] numeros)
+        static void acharMedia(decimal media,int[] numeros)
         {
             media = media / numeros.Length;
             Console.WriteLine($"media e : {media}");
@@ -187,7 +187,7 @@ namespace ProgramacaoEstruturada.ConsoleApp1
             else
                 naoENumero = false;
         }
-        static void entradaDeNumero(out int[] numeros, out int media)
+        static void entradaDeNumero(out int[] numeros, out decimal media)
         {
             numeros = new int[10];
             media = 0;
