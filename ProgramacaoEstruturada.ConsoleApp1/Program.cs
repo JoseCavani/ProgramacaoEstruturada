@@ -32,7 +32,7 @@ namespace ProgramacaoEstruturada.ConsoleApp1
                         maioresNumeros(ref numeros);
                         continue;
                     case 3:
-                        acharMedia(media);
+                        acharMedia(media, numeros);
                         continue;
                     case 4:
                         numerosNegativos(numeros);
@@ -133,9 +133,8 @@ namespace ProgramacaoEstruturada.ConsoleApp1
                 }
                
             }
-            numeros = numeros2;
-            mostraNumeros(numeros);
-            return numeros;
+            mostraNumeros(numeros2);
+            return numeros2;
         }
         static void numerosNegativos(int[] numeros)
         {
@@ -148,9 +147,9 @@ namespace ProgramacaoEstruturada.ConsoleApp1
             }
             Console.WriteLine();
         }
-        static void acharMedia(int media)
+        static void acharMedia(int media,int[] numeros)
         {
-            media = media / 10;
+            media = media / numeros.Length;
             Console.WriteLine($"media e : {media}");
         }
         static void menoresNumeros(int[] numeros,out int menor)
